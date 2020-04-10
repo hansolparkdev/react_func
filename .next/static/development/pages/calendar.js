@@ -3366,17 +3366,17 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 var birthdays = {
   3: ['보험', 'Gianni'],
-  8: ['Elena'],
-  9: ['Irene'],
-  12: ['Paolo', 'Giorgia'],
-  18: ['Claudia'],
-  22: ['Maria', 'Luigi'],
-  25: ['Simone'],
-  26: ['Marta']
+  8: ['보험'],
+  9: ['보험'],
+  12: ['보험', 'Giorgia'],
+  18: ['보험'],
+  22: ['보험', 'Luigi'],
+  25: ['보험'],
+  26: ['보험']
 };
 
-var foo = function foo() {
-  console.log('foo');
+var foo = function foo(date) {
+  console.log(date, '에 할일 목록 출력');
 };
 
 function renderDay(day) {
@@ -3426,12 +3426,23 @@ function renderDay(day) {
       lineNumber: 49,
       columnNumber: 7
     }
-  }, date), __jsx("div", {
-    style: toList,
+  }, __jsx("button", {
+    type: "button",
+    onClick: function onClick() {
+      foo(date);
+    },
     __self: this,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 50,
+      columnNumber: 9
+    }
+  }, date)), __jsx("div", {
+    style: toList,
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 54,
       columnNumber: 7
     }
   }, birthdays[date] && birthdays[date].map(function (name, i) {
@@ -3441,16 +3452,15 @@ function renderDay(day) {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 53,
+        lineNumber: 57,
         columnNumber: 13
       }
     }, __jsx("button", {
       type: "button",
-      onClick: foo,
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 54,
+        lineNumber: 58,
         columnNumber: 15
       }
     }, name));
@@ -3462,7 +3472,7 @@ function Example() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 64,
+      lineNumber: 68,
       columnNumber: 5
     }
   }, __jsx(react_day_picker__WEBPACK_IMPORTED_MODULE_1___default.a, {
@@ -3472,7 +3482,7 @@ function Example() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 65,
+      lineNumber: 69,
       columnNumber: 7
     }
   }));

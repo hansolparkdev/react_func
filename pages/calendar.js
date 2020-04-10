@@ -3,16 +3,16 @@ import DayPicker from 'react-day-picker';
 
 const birthdays = {
   3: ['보험', 'Gianni'],
-  8: ['Elena'],
-  9: ['Irene'],
-  12: ['Paolo', 'Giorgia'],
-  18: ['Claudia'],
-  22: ['Maria', 'Luigi'],
-  25: ['Simone'],
-  26: ['Marta'],
+  8: ['보험'],
+  9: ['보험'],
+  12: ['보험', 'Giorgia'],
+  18: ['보험'],
+  22: ['보험', 'Luigi'],
+  25: ['보험'],
+  26: ['보험'],
 };
-const foo = () => {
-  console.log('foo');
+const foo = (date) => {
+  console.log(date, '에 할일 목록 출력');
 };
 
 function renderDay(day) {
@@ -46,12 +46,16 @@ function renderDay(day) {
   };
   return (
     <div style={cellStyle}>
-      <div style={dateStyle}>{date}</div>
+      <div style={dateStyle}>
+        <button type="button" onClick={() => { foo(date); }}>
+          {date}
+        </button>
+      </div>
       <div style={toList}>
         {birthdays[date]
           && birthdays[date].map((name, i) => (
             <div key={i} style={birthdayStyle}>
-              <button type="button" onClick={foo}>{name}</button>
+              <button type="button">{name}</button>
             </div>
           ))}
       </div>
