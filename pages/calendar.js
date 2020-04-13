@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import DayPicker from 'react-day-picker';
+import { Helmet } from 'react-helmet';
 
 const birthdays = {
   3: ['보험', 'Gianni'],
@@ -32,8 +33,8 @@ function renderDay(day) {
   const cellStyle = {
     height: '150px',
     width: '150px',
-    border: '1px solid #BDBDBD',
     margin: 0,
+    padding: 0,
     position: 'relative',
   };
   const toList = {
@@ -64,12 +65,66 @@ function renderDay(day) {
 }
 
 export default function Example() {
+  const modifiers = {
+    allday: { daysOfWeek: [0, 1, 2, 3, 4, 5, 6] },
+    birthday: new Date(2020, 3, 10),
+    disabled: { daysOfWeek: [6] },
+    monday: { daysOfWeek: [1] },
+  };
+  const modifiersStyles = {
+    allday: {
+      padding: '0px',
+    },
+  };
+  const MONTHS = [
+    '1월',
+    '2월',
+    '3월',
+    '4월',
+    '5월',
+    '6월',
+    '7월',
+    '8월',
+    '9월',
+    '10월',
+    '11월',
+    '12월',
+  ];
+  const WEEKDAYS_LONG = [
+    '일요일',
+    '월요일',
+    '화요일',
+    '수요일',
+    '목요일',
+    '금요일',
+    '토요일',
+  ];
+  const WEEKDAYS_SHORT = ['일', '월', '화', '수', '목', '금', '토'];
+
   return (
     <div>
+      <Helmet>
+        <style>
+          {`
+            .DayPicker-Day{
+              border: 1px solid #BDBDBD;
+            }
+            .DayPicker-Weekday {
+              border: 1px solid #BDBDBD;
+            }
+          `}
+        </style>
+      </Helmet>
       <DayPicker
         canChangeMonth={false}
+        modifiers={modifiers}
         className="Birthdays"
         renderDay={renderDay}
+        months={MONTHS}
+        weekdaysLong={WEEKDAYS_LONG}
+        weekdaysShort={WEEKDAYS_SHORT}
+        modifiersStyles={modifiersStyles}
+        locale="ko"
       />
     </div>
   );
