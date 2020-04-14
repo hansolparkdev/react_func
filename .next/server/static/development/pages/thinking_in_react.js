@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -112,46 +112,78 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 /* eslint-disable object-curly-newline */
 
 
-const ProductCategoryRow = () => {
-  console.log('ProductCategory');
+const ProductCategoryRow = ({
+  category
+}) => __jsx(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], {
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 6,
+    columnNumber: 3
+  }
+}, __jsx("tr", {
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 7,
+    columnNumber: 5
+  }
+}, __jsx("th", {
+  colSpan: "2",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 8,
+    columnNumber: 7
+  }
+}, category)));
+
+const ProductRow = ({
+  product
+}) => {
+  const name = product.stocked ? product.name : __jsx("span", {
+    style: {
+      color: 'red'
+    },
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 16,
+      columnNumber: 49
+    }
+  }, product.name);
   return __jsx(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 8,
+      lineNumber: 18,
       columnNumber: 5
     }
-  }, __jsx("div", {
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 9,
-      columnNumber: 7
-    }
-  }, "\uCE74\uD14C\uACE0\uB9AC\uBAA9\uB85D"));
-};
-
-const ProductRow = () => {
-  console.log('ProductRow');
-  return __jsx(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], {
+  }, __jsx("tr", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 19,
-      columnNumber: 5
+      columnNumber: 7
     }
-  }, __jsx("div", {
+  }, __jsx("td", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 20,
-      columnNumber: 7
+      columnNumber: 9
     }
-  }, "\uC81C\uD488\uBAA9\uB85D"));
+  }, name), __jsx("td", {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 21,
+      columnNumber: 9
+    }
+  }, product.price)));
 };
 
 const ProductTable = props => {
-  // console.log(props);
   const {
     filterText,
     inStockOnly,
@@ -170,20 +202,24 @@ const ProductTable = props => {
 
     if (product.category !== lastCategory) {
       rows.push(__jsx(ProductCategoryRow, {
+        key: product.category,
+        category: product.category,
         __self: undefined,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 41,
+          lineNumber: 40,
           columnNumber: 9
         }
       }));
     }
 
     rows.push(__jsx(ProductRow, {
+      key: product.name,
+      product: product,
       __self: undefined,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 45,
+        lineNumber: 44,
         columnNumber: 7
       }
     }));
@@ -193,56 +229,55 @@ const ProductTable = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 51,
+      lineNumber: 50,
       columnNumber: 5
     }
   }, __jsx("table", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 52,
+      lineNumber: 51,
       columnNumber: 7
     }
   }, __jsx("thead", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 53,
+      lineNumber: 52,
       columnNumber: 9
     }
   }, __jsx("tr", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 54,
+      lineNumber: 53,
       columnNumber: 11
     }
   }, __jsx("th", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 55,
+      lineNumber: 54,
       columnNumber: 13
     }
   }, "Name"), __jsx("th", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 56,
+      lineNumber: 55,
       columnNumber: 13
     }
   }, "Price"))), __jsx("tbody", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 59,
+      lineNumber: 58,
       columnNumber: 9
     }
   }, rows)));
 };
 
 const SearchBar = props => {
-  console.log('SearchBar');
   const {
     filterText,
     inStockOnly,
@@ -262,7 +297,7 @@ const SearchBar = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 75,
+      lineNumber: 73,
       columnNumber: 5
     }
   }, __jsx("form", {
@@ -270,7 +305,7 @@ const SearchBar = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 76,
+      lineNumber: 74,
       columnNumber: 7
     }
   }, __jsx("input", {
@@ -281,14 +316,14 @@ const SearchBar = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 77,
+      lineNumber: 75,
       columnNumber: 9
     }
   }), __jsx("p", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 83,
+      lineNumber: 81,
       columnNumber: 9
     }
   }, __jsx("input", {
@@ -298,7 +333,7 @@ const SearchBar = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 84,
+      lineNumber: 82,
       columnNumber: 11
     }
   }), ' ', "only show products in stock")));
@@ -336,7 +371,6 @@ const FilterableProductTable = () => {
     stocked: true,
     name: 'Nexus 7'
   }];
-  console.log(PRODUCTS);
   const {
     0: filterText,
     1: setFilterText
@@ -358,7 +392,7 @@ const FilterableProductTable = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 120,
+      lineNumber: 116,
       columnNumber: 5
     }
   }, __jsx(SearchBar, {
@@ -369,7 +403,7 @@ const FilterableProductTable = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 121,
+      lineNumber: 117,
       columnNumber: 7
     }
   }), __jsx(ProductTable, {
@@ -379,7 +413,7 @@ const FilterableProductTable = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 127,
+      lineNumber: 123,
       columnNumber: 7
     }
   }));
@@ -389,7 +423,7 @@ const FilterableProductTable = () => {
 
 /***/ }),
 
-/***/ 4:
+/***/ 5:
 /*!******************************************!*\
   !*** multi ./pages/thinking_in_react.js ***!
   \******************************************/

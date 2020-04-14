@@ -2,29 +2,28 @@
 /* eslint-disable object-curly-newline */
 import React, { useState, Fragment } from 'react';
 
-const ProductCategoryRow = () => {
-  console.log('ProductCategory');
-  return (
-    <Fragment>
-      <div>
-        카테고리목록
-      </div>
-    </Fragment>
-  );
-};
+const ProductCategoryRow = ({category}) => (
+  <Fragment>
+    <tr>
+      <th colSpan="2">
+        {category}
+      </th>
+    </tr>
+  </Fragment>
+);
 
-const ProductRow = () => {
-  console.log('ProductRow');
+const ProductRow = ({product}) => {
+  const name = product.stocked ? product.name : <span style={{color: 'red'}}>{product.name}</span>;
   return (
     <Fragment>
-      <div>
-        제품목록
-      </div>
+      <tr>
+        <td>{name}</td>
+        <td>{product.price}</td>
+      </tr>
     </Fragment>
   );
 };
 const ProductTable = (props) => {
-  // console.log(props);
   const { filterText, inStockOnly, products } = props;
   const rows = [];
   let lastCategory = null;
@@ -38,11 +37,11 @@ const ProductTable = (props) => {
     }
     if (product.category !== lastCategory) {
       rows.push(
-        <ProductCategoryRow />,
+        <ProductCategoryRow key={product.category} category={product.category} />,
       );
     }
     rows.push(
-      <ProductRow />,
+      <ProductRow key={product.name} product={product} />,
     );
     lastCategory = product.category;
   });
@@ -63,7 +62,6 @@ const ProductTable = (props) => {
 };
 
 const SearchBar = (props) => {
-  console.log('SearchBar');
   const { filterText, inStockOnly, onFilterTextChange, onInStockChange} = props;
   const handleFilterTextChange = (e) => {
     onFilterTextChange(e.target.value);
@@ -104,8 +102,6 @@ const FilterableProductTable = () => {
     { category: 'Electronics', price: '$399.99', stocked: false, name: 'iPhone 5'},
     { category: 'Electronics', price: '$199.99', stocked: true, name: 'Nexus 7'},
   ];
-
-  console.log(PRODUCTS);
 
   const [filterText, setFilterText] = useState('');
   const [inStockOnly, setInStockOnly] = useState(false);
